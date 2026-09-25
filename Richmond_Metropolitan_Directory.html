@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Richmond Metropolitan official directory and resource hub.">
+  <title>Richmond Metropolitan | Directory</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root{
+  --bg:#07090c;
+  --panel:#0e1218;
+  --panel2:#111720;
+  --text:#f4f7fb;
+  --muted:#9ca8b7;
+  --line:rgba(255,255,255,.09);
+  --accent:#38d66b;
+  --accent2:#20a94e;
+  --shadow:0 20px 60px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.topbar{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 5%;background:rgba(7,9,12,.9);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:12px}.brand-mark{width:44px;height:44px;border:1px solid rgba(56,214,107,.55);border-radius:12px;display:grid;place-items:center;font-weight:900;color:var(--accent);background:rgba(56,214,107,.06)}
+.brand-name{font-size:13px;font-weight:900;letter-spacing:.08em}.brand-sub{font-size:9px;color:var(--muted);letter-spacing:.16em;margin-top:1px}
+nav{display:flex;gap:22px}nav a{font-size:13px;color:#cbd3dd;transition:.2s}nav a:hover{color:var(--accent)}
+.menu-toggle{display:none;background:none;color:white;border:0;font-size:25px}
+.hero{min-height:620px;padding:90px 7%;display:flex;align-items:center;justify-content:space-between;gap:50px;background:radial-gradient(circle at 75% 35%,rgba(56,214,107,.12),transparent 34%),linear-gradient(180deg,#090c10,#07090c)}
+.hero-content{max-width:760px}.eyebrow{color:var(--accent);font-size:11px;font-weight:800;letter-spacing:.18em}
+h1{font-size:clamp(42px,6vw,76px);line-height:1.02;margin:16px 0 22px;letter-spacing:-.04em}h1 span{color:var(--accent)}
+h2{font-size:clamp(30px,4vw,46px);line-height:1.08;margin:8px 0 12px;letter-spacing:-.03em}h3{margin:8px 0;font-size:20px}
+.hero p{max-width:670px;color:var(--muted);font-size:17px}.hero-buttons{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 18px;border-radius:10px;font-weight:800;font-size:13px;border:1px solid var(--line);cursor:pointer}.primary{background:var(--accent);color:#041008}.primary:hover{background:#52eb81}.secondary{background:#11161d}.secondary:hover{border-color:rgba(56,214,107,.5)}
+.hero-card{width:300px;padding:30px;border:1px solid var(--line);background:linear-gradient(145deg,#11171e,#0b0f14);border-radius:20px;box-shadow:var(--shadow)}.status-dot{width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 18px var(--accent);margin-bottom:22px}.hero-card span{font-size:10px;color:var(--muted);letter-spacing:.16em;font-weight:800}.hero-card strong{display:block;font-size:21px;margin:8px 0}.hero-card small{color:var(--muted)}
+.section{padding:90px 7%}.alt{background:#0a0d12;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.intro{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:end}.intro p,.section-heading>p{color:var(--muted);max-width:620px}
+.section-heading{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:34px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{padding:28px;border:1px solid var(--line);background:var(--panel);border-radius:16px;transition:.2s}.card:hover{transform:translateY(-3px);border-color:rgba(56,214,107,.35)}.icon{font-size:26px}.card p,.department p{color:var(--muted);font-size:14px}.card a{display:inline-block;margin-top:10px;color:var(--accent);font-size:13px;font-weight:700}
+.department-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.department{padding:30px;border-radius:18px;border:1px solid var(--line);background:var(--panel)}.department button{margin-top:12px;padding:10px 14px;border-radius:8px;border:1px solid rgba(56,214,107,.35);background:transparent;color:var(--accent);font-weight:700;cursor:pointer}.dept-tag{font-size:9px;letter-spacing:.16em;color:var(--muted);font-weight:800}
+.resource-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.resource{display:grid;grid-template-columns:48px 1fr 20px;gap:14px;align-items:center;padding:18px;border:1px solid var(--line);border-radius:13px;background:var(--panel);transition:.2s}.resource:hover{border-color:rgba(56,214,107,.4);transform:translateX(3px)}.resource-icon{font-size:23px;text-align:center}.resource strong,.resource small{display:block}.resource small{color:var(--muted);font-size:12px}.resource b{color:var(--accent)}
+.quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.quick{padding:23px;border:1px solid var(--line);border-radius:14px;background:var(--panel);transition:.2s}.quick:hover{border-color:rgba(56,214,107,.4);transform:translateY(-2px)}.quick span{font-size:24px}.quick strong,.quick small{display:block}.quick small{color:var(--muted);font-size:12px;margin-top:3px}
+.link-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.link-grid a{padding:20px;border:1px solid var(--line);background:var(--panel);border-radius:13px;font-weight:800}.link-grid a:hover{border-color:rgba(56,214,107,.4);color:var(--accent)}
+footer{padding:35px 7%;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:30px;color:var(--muted);font-size:12px}footer strong{color:var(--text);letter-spacing:.1em}.footer-right{align-self:center}
+.notice{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:100;place-items:center;padding:20px}.notice.show{display:grid}.notice-box{position:relative;max-width:480px;padding:30px;background:#10151c;border:1px solid rgba(56,214,107,.3);border-radius:18px;box-shadow:var(--shadow)}.notice-box p{color:var(--muted)}.close{position:absolute;right:15px;top:10px;border:0;background:none;color:#fff;font-size:28px;cursor:pointer}
+
+@media(max-width:850px){
+  .menu-toggle{display:block}nav{display:none;position:absolute;top:73px;left:0;right:0;background:#090c10;padding:18px 7%;border-bottom:1px solid var(--line);flex-direction:column;gap:14px}nav.open{display:flex}
+  .hero{padding-top:65px;min-height:auto;flex-direction:column;align-items:flex-start}.hero-card{width:100%}
+  .intro,.section-heading{grid-template-columns:1fr;display:grid}.cards,.department-grid,.resource-list,.quick-grid{grid-template-columns:1fr}.link-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:520px){
+  .topbar{padding:12px 5%}.brand-name{font-size:11px}.brand-sub{font-size:8px}.section{padding:65px 5%}.hero{padding-left:5%;padding-right:5%}h1{font-size:42px}.link-grid{grid-template-columns:1fr}footer{padding:30px 5%;flex-direction:column}
+}
+
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">RM</div>
+      <div>
+        <div class="brand-name">RICHMOND METROPOLITAN</div>
+        <div class="brand-sub">DIRECTORY & RESOURCE HUB</div>
+      </div>
+    </div>
+    <button class="menu-toggle" aria-label="Open navigation">☰</button>
+    <nav id="mainNav">
+      <a href="#home">Home</a>
+      <a href="#leadership">Leadership</a>
+      <a href="#departments">Departments</a>
+      <a href="#staff">Staff</a>
+      <a href="#resources">Resources</a>
+      <a href="#links">Links</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">RICHMOND METROPOLITAN</span>
+        <h1>One directory.<br><span>Everything organized.</span></h1>
+        <p>
+          The central resource hub for Richmond Metropolitan. Find department
+          information, leadership resources, staff documents, applications,
+          training materials, and important links in one place.
+        </p>
+        <div class="hero-buttons">
+          <a class="btn primary" href="#departments">Explore Departments</a>
+          <a class="btn secondary" href="#resources">View Resources</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="status-dot"></div>
+        <span>COMMUNITY STATUS</span>
+        <strong>Richmond Metropolitan</strong>
+        <small>ERLC Roleplay Community</small>
+      </div>
+    </section>
+
+    <section class="section intro">
+      <div>
+        <span class="eyebrow">CENTRAL HUB</span>
+        <h2>Everything your community needs.</h2>
+      </div>
+      <p>
+        Use this directory as the starting point for members, staff,
+        department leadership, developers, and executive personnel.
+      </p>
+    </section>
+
+    <section id="leadership" class="section">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">COMMAND STRUCTURE</span>
+          <h2>Leadership Directory</h2>
+        </div>
+        <p>Replace the placeholders below with your current leadership team.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="icon">👑</div>
+          <h3>Ownership</h3>
+          <p>Owner and Co-Owner information, responsibilities, and official contacts.</p>
+          <a href="#links">View Contacts →</a>
+        </article>
+        <article class="card">
+          <div class="icon">🏛️</div>
+          <h3>Executive Team</h3>
+          <p>Managers, directors, commissioners, and other executive personnel.</p>
+          <a href="#resources">Executive Resources →</a>
+        </article>
+        <article class="card">
+          <div class="icon">⚖️</div>
+          <h3>Chain of Command</h3>
+          <p>Reference the organizational structure and escalation process.</p>
+          <a href="#staff">View Staff Resources →</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="departments" class="section alt">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">PUBLIC SAFETY</span>
+          <h2>Departments</h2>
+        </div>
+        <p>Department pages can be connected to your individual SOPs and applications.</p>
+      </div>
+      <div class="department-grid">
+        <article class="department police">
+          <span class="dept-tag">LAW ENFORCEMENT</span>
+          <h3>Richmond Police</h3>
+          <p>Patrol, traffic enforcement, investigations, training, and department operations.</p>
+          <button onclick="showNotice('Richmond Police department page is ready for your SOP/application link.')">Open Department</button>
+        </article>
+        <article class="department sheriff">
+          <span class="dept-tag">LAW ENFORCEMENT</span>
+          <h3>Henrico County Sheriff's Office</h3>
+          <p>Corrections, courthouse operations, warrants, transport, and sheriff services.</p>
+          <button onclick="showNotice('Sheriff department page is ready for your SOP/application link.')">Open Department</button>
+        </article>
+        <article class="department fire">
+          <span class="dept-tag">FIRE & RESCUE</span>
+          <h3>Fire Department</h3>
+          <p>Fire suppression, rescue operations, training standards, and incident response.</p>
+          <button onclick="showNotice('Fire Department page is ready for your SOP/application link.')">Open Department</button>
+        </article>
+        <article class="department ems">
+          <span class="dept-tag">EMERGENCY MEDICAL</span>
+          <h3>EMS</h3>
+          <p>Emergency medical response, patient care, transport, and medical training.</p>
+          <button onclick="showNotice('EMS page is ready for your SOP/application link.')">Open Department</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="staff" class="section">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">INTERNAL OPERATIONS</span>
+          <h2>Staff Resources</h2>
+        </div>
+        <p>Keep sensitive documents private by linking these to restricted resources rather than publishing them openly.</p>
+      </div>
+      <div class="resource-list">
+        <a class="resource" href="#" onclick="showNotice('Add your Staff SOP URL here.'); return false;">
+          <span class="resource-icon">📘</span>
+          <span><strong>Staff SOP</strong><small>Rules, procedures, expectations, and enforcement standards.</small></span>
+          <b>→</b>
+        </a>
+        <a class="resource" href="#" onclick="showNotice('Add your Internal Affairs resource here.'); return false;">
+          <span class="resource-icon">🛡️</span>
+          <span><strong>Internal Affairs</strong><small>Complaint, investigation, documentation, and review resources.</small></span>
+          <b>→</b>
+        </a>
+        <a class="resource" href="#" onclick="showNotice('Add your staff training resource here.'); return false;">
+          <span class="resource-icon">🎓</span>
+          <span><strong>Staff Training</strong><small>Training handbook, testing, onboarding, and continuing education.</small></span>
+          <b>→</b>
+        </a>
+        <a class="resource" href="#" onclick="showNotice('Add your staff forms here.'); return false;">
+          <span class="resource-icon">📋</span>
+          <span><strong>Staff Forms</strong><small>Reports, commendations, complaints, leave requests, and other forms.</small></span>
+          <b>→</b>
+        </a>
+      </div>
+    </section>
+
+    <section id="resources" class="section alt">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">DOCUMENT CENTER</span>
+          <h2>Applications & Resources</h2>
+        </div>
+      </div>
+      <div class="quick-grid">
+        <a href="#" class="quick" onclick="showNotice('Paste your staff application link into this button.'); return false;"><span>📝</span><strong>Staff Application</strong><small>Apply for staff positions.</small></a>
+        <a href="#" class="quick" onclick="showNotice('Paste your department application link into this button.'); return false;"><span>🚔</span><strong>Department Application</strong><small>Join a public safety department.</small></a>
+        <a href="#" class="quick" onclick="showNotice('Paste your executive application link into this button.'); return false;"><span>👑</span><strong>Executive Application</strong><small>Manager and Chief-level applications.</small></a>
+        <a href="#" class="quick" onclick="showNotice('Paste your developer application link into this button.'); return false;"><span>💻</span><strong>Developer Application</strong><small>Join the development team.</small></a>
+        <a href="#" class="quick" onclick="showNotice('Add your SOP handbook link here.'); return false;"><span>📚</span><strong>SOP Library</strong><small>Department policies and procedures.</small></a>
+        <a href="#" class="quick" onclick="showNotice('Add your Sonoran CAD link here.'); return false;"><span>🖥️</span><strong>Sonoran CAD</strong><small>CAD and dispatch resources.</small></a>
+      </div>
+    </section>
+
+    <section id="links" class="section">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">CONNECT</span>
+          <h2>Important Links</h2>
+        </div>
+        <p>Replace these buttons with your official community URLs.</p>
+      </div>
+      <div class="link-grid">
+        <a href="#" onclick="showNotice('Add your permanent Discord invite URL here.'); return false;">💬 <span>Discord</span></a>
+        <a href="#" onclick="showNotice('Add your Roblox community URL here.'); return false;">🎮 <span>Roblox Community</span></a>
+        <a href="#" onclick="showNotice('Add your Sonoran CAD URL here.'); return false;">🖥️ <span>Sonoran CAD</span></a>
+        <a href="#" onclick="showNotice('Add your applications hub URL here.'); return false;">📝 <span>Applications</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <strong>RICHMOND METROPOLITAN</strong>
+      <p>Official Directory & Resource Hub</p>
+    </div>
+    <div class="footer-right">© <span id="year"></span> Richmond Metropolitan</div>
+  </footer>
+
+  <div id="notice" class="notice" role="dialog" aria-live="polite">
+    <div class="notice-box">
+      <button class="close" onclick="closeNotice()">×</button>
+      <h3>Directory Link</h3>
+      <p id="noticeText"></p>
+      <button class="btn primary" onclick="closeNotice()">Close</button>
+    </div>
+  </div>
+
+  <script>
+const nav = document.getElementById("mainNav");
+const menu = document.querySelector(".menu-toggle");
+menu.addEventListener("click", () => nav.classList.toggle("open"));
+
+document.querySelectorAll("#mainNav a").forEach(link => {
+  link.addEventListener("click", () => nav.classList.remove("open"));
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+function showNotice(message) {
+  document.getElementById("noticeText").textContent = message;
+  document.getElementById("notice").classList.add("show");
+}
+function closeNotice() {
+  document.getElementById("notice").classList.remove("show");
+}
+document.getElementById("notice").addEventListener("click", (e) => {
+  if (e.target.id === "notice") closeNotice();
+});
+
+</script>
+</body>
+</html>
